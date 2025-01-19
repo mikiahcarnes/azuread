@@ -40,31 +40,37 @@ This tutorial outlines the implementation of on-premises Active Directory within
 <p>
 <p>
       Create the Resource Group where both of your VMs and your virtual net will exist:
+</p>
+<p>
      <img src="https://i.postimg.cc/43QknJPY/Create-Resource-Group.png" height="75%" width="100%" alt="resource group"/>
 </p>
 <p>
     Create the Virtual Network your VMs will connect to so they can communicate with each other. Be sure to place this in the Resource Group you created in the last step:
+</p>
+<p>
     <img src="https://i.postimg.cc/7Y2RfHYq/Create-Virtual-Network.png" height="75%" width="100%" alt="virtual network"/>
 </p>
 <p>
     Create the Windows Server 2022 Domain Controller VM. Place it in the Resource Group you made and attach it to the same virtual network you made:
+</p>
+<p>
    <img src="https://i.postimg.cc/mZHxFNmx/DCVM-1.png" height="75%" width="100%" alt="DC creation 1"/>
    <img src="https://i.postimg.cc/WzMfY8yh/DCVM-2.png" height="75%" width="100%" alt="DC creation 2"/>
 </p>
- 
 
 </p>
 <p>
   Create the Client VM (Windows 10) named “Client-1”. Use the same Resource Group and Vnet that was created in the previous step:
 </p>
 <p>
-  <img src="https://i.imgur.com/XyEmv8f.png" height="75%" width="100%" alt="vm windows"/>
+  <img src="https://i.postimg.cc/52YdH5DZ/Client-1-VM-1.png" height="75%" width="100%" alt="vm windows"/>
+  <img src="https://i.postimg.cc/QMQz5fmn/Client-1-VM-2.png" height="75%" width="100%" alt="vm windows"/>
 </p>
 <p>
-  Set Domain Controller’s NIC Private IP address to be static:
+  Set Domain Controller’s (Windows Server 2022 VM) NIC Private IP address to be static:
 </p>
 <p>
-  <img src="https://i.imgur.com/KHU9kC4.png" height="75%" width="100%" alt="static ip"/>
+  <img src="https://i.postimg.cc/BQPqQMJx/Static-Private-IP-DCVM.png" height="75%" width="100%" alt="static ip"/>
 </p>
 <p>
   Ensure that both VMs are in the same Vnet (you can check the topology with Network Watcher):
