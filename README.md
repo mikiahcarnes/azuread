@@ -13,7 +13,7 @@ This tutorial outlines the implementation of on-premises Active Directory within
 <h2>Environments and Technologies Used</h2>
 
 - Microsoft Azure (Virtual Machines/Compute)
-- Remote Desktop
+- Remote Desktop Connection
 - Active Directory Domain Services
 - PowerShell
 
@@ -28,7 +28,7 @@ This tutorial outlines the implementation of on-premises Active Directory within
 - Ensure Connectivity between the client and Domain Controller
 - Install Active Directory
 - Create an Admin and Normal User Account in AD
-- Join Client-1 to your domain (myadproject.com)
+- Join Client-1 to your domain (mydomain.com)
 - Setup Remote Desktop for non-administrative users on Client-1
 - Create additional users and attempt to log into client-1 with one of the users
 
@@ -38,14 +38,24 @@ This tutorial outlines the implementation of on-premises Active Directory within
 <h3 align="center">Setup Resources in Azure</h3>
 <br />
 <p>
-  Create the Domain Controller VM (Windows Server 2022) named “DC-1”:
+<p>
+      Create the Resource Group where both of your VMs and your virtual net will exist:
+     <img src="https://i.postimg.cc/43QknJPY/Create-Resource-Group.png" height="75%" width="100%" alt="resource group"/>
 </p>
 <p>
-  <img src="https://i.imgur.com/gaAzjvb.png" height="75%" width="100%" alt="resource group"/>
-  <img src="https://i.imgur.com/hubTfey.png" height="75%" width="100%" alt="vm ms server"/>
+    Create the Virtual Network your VMs will connect to so they can communicate with each other. Be sure to place this in the Resource Group you created in the last step:
+    <img src="https://i.postimg.cc/7Y2RfHYq/Create-Virtual-Network.png" height="75%" width="100%" alt="virtual network"/>
 </p>
 <p>
-  Create the Client VM (Windows 10) named “Client-1”. Use the same Resource Group and Vnet that was created in previous step:
+    Create the Windows Server 2022 Domain Controller VM. Place it in the Resource Group you made and attach it to the same virtual network you made:
+   <img src="https://i.postimg.cc/mZHxFNmx/DCVM-1.png" height="75%" width="100%" alt="DC creation 1"/>
+   <img src="https://i.postimg.cc/WzMfY8yh/DCVM-2.png" height="75%" width="100%" alt="DC creation 2"/>
+</p>
+ 
+
+</p>
+<p>
+  Create the Client VM (Windows 10) named “Client-1”. Use the same Resource Group and Vnet that was created in the previous step:
 </p>
 <p>
   <img src="https://i.imgur.com/XyEmv8f.png" height="75%" width="100%" alt="vm windows"/>
