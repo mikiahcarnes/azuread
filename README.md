@@ -51,7 +51,7 @@ This tutorial outlines the implementation of on-premises Active Directory within
     <img src="https://i.postimg.cc/7Y2RfHYq/Create-Virtual-Network.png" height="75%" width="100%" alt="virtual network"/>
 </p>
 <p>
-    Create the Windows Server 2022 Domain Controller VM. Place it in the Resource Group you made and attach it to the same virtual network you made:
+    Create the Windows Server 2022 Domain Controller VM named "DC-01". Place it in the Resource Group you made and attach it to the same virtual network you made. NOTE: Create a new public IP too. It'll save you time later:
 </p>
 <p>
    <img src="https://i.postimg.cc/mZHxFNmx/DCVM-1.png" height="75%" width="100%" alt="DC creation 1"/>
@@ -67,17 +67,12 @@ This tutorial outlines the implementation of on-premises Active Directory within
   <img src="https://i.postimg.cc/QMQz5fmn/Client-1-VM-2.png" height="75%" width="100%" alt="vm windows"/>
 </p>
 <p>
-  Set Domain Controller’s (Windows Server 2022 VM) NIC Private IP address to be static:
+  Set Domain Controller’s (Windows Server 2022 VM) NIC Private IP address to be static. It should be set to dynamic by default; just change it to static:
 </p>
 <p>
   <img src="https://i.postimg.cc/BQPqQMJx/Static-Private-IP-DCVM.png" height="75%" width="100%" alt="static ip"/>
 </p>
-<p>
-  Ensure that both VMs are in the same Vnet (you can check the topology with Network Watcher):
-</p>
-<p>
-  <img src="https://i.imgur.com/rFpHLdQ.png" height="75%" width="100%" alt="topology"/>
-</p>
+
 <br />
 <br />
 <h3 align="center">Ensure Connectivity between the client and Domain Controller</h3>
