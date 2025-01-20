@@ -101,16 +101,10 @@ This tutorial outlines the implementation of on-premises Active Directory within
   <img src="https://i.postimg.cc/250WhVjP/Install-Active-Directory.png" height="75%" width="100%" alt="active directory install"/>
 </p>
 <p>
-  Promote as a Domain Controller:
+  Promote as a Domain Controller. Click on "promote this server to a domain controller." I have arrows pointed to it in the picture below, and follow the setup wizard. Click add a new forest and name the domain whatever you want or just copy what I did. Remember what it is though:
 </p>
 <p>
-  <img src="https://i.imgur.com/zi15fw4.png" height="75%" width="100%" alt="domain controller promotion"/>
-</p>
-<p>
-  Setup a new forest as myactivedirectory.com (can be anything, just remember what it is - I ultimately did set it up as myadproject.com which you'll see in the next pic):
-</p>
-<p>
-  <img src="https://i.imgur.com/DCFUVrM.png" height="75%" width="100%" alt="set new forest"/>
+  <img src="https://i.postimg.cc/mgpVBnmQ/Promote-To-Domain-Controller.png" height="75%" width="100%" alt="domain controller promotion"/>
 </p>
 <p>
   Restart and then log back into DC-1 as user: myadproject.com\labuser:
