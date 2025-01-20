@@ -78,32 +78,27 @@ This tutorial outlines the implementation of on-premises Active Directory within
 <h3 align="center">Ensure Connectivity between the client and Domain Controller</h3>
 <br />
 <p>
-  Login to Client-1 with Remote Desktop and ping DC-1’s private IP address with ping -t <ip address> (perpetual ping):
+  Login to the Domain Controller (DC-01), video on that <a href="https://youtu.be/u0qzXQTW3yk?si=XBLIIh_5TY9Y8PeO" target="_blank">here</a>, and enable ICMPv4 on the local Windows firewall. This is a very important step. A connection cannot be made between the VMs if you skip this:
 </p>
 <p>
-  <img src="https://i.imgur.com/bnPM9tX.png" height="75%" width="100%" alt="perpetual ping"/>
+  <img src="https://i.postimg.cc/d3d0rtP9/Enable-ICMPv4-DCVM.png" height="75%" width="100%" alt="enable ICMPv4"/>
 </p>
 <p>
-  Login to the Domain Controller and enable ICMPv4 in on the local windows firewall:
+  Login to Client-1 with Remote Desktop Connection and ping DC-01’s private IP address with ping -t <ip address> (perpetual ping):
 </p>
 <p>
-  <img src="https://i.imgur.com/ZpPyEkt.png" height="75%" width="100%" alt="enable ICMPv4"/>
+  <img src="https://i.postimg.cc/L5VCLzwV/Good-Connection-Between-VMs.png" height="75%" width="100%" alt="perpetual ping"/>
 </p>
-<p>
-  Check back at Client-1 to see the ping succeed:
-</p>
-<p>
-  <img src="https://i.imgur.com/8o3OfjY.png" height="75%" width="100%" alt="ping success"/>
-</p>
+        
 <br />
 <br />
 <h3 align="center">Install Active Directory</h3>
 <br />
 <p>
-  Login to DC-1 and install Active Directory Domain Services:
+  Login to DC-01 and install Active Directory Domain Services from the add roles and features wizard:
 </p>
 <p>
-  <img src="https://i.imgur.com/A1V9XJ5.png" height="75%" width="100%" alt="active directory install"/>
+  <img src="https://i.postimg.cc/250WhVjP/Install-Active-Directory.png" height="75%" width="100%" alt="active directory install"/>
 </p>
 <p>
   Promote as a Domain Controller:
