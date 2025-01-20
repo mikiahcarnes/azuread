@@ -106,44 +106,39 @@ This tutorial outlines the implementation of on-premises Active Directory within
 <p>
   <img src="https://i.postimg.cc/mgpVBnmQ/Promote-To-Domain-Controller.png" height="75%" width="100%" alt="domain controller promotion"/>
 </p>
-<p>
-  Restart and then log back into DC-1 as user: myadproject.com\labuser:
-</p>
-<p>
-  <img src="https://i.imgur.com/7UakWMQ.png" height="75%" width="100%" alt="fqdn login"/>
-</p>
+
 <br />
 <br />
 <h3 align="center">Create an Admin and Normal User Account in AD</h3>
 <br />
 <p>
-  In Active Directory Users and Computers (ADUC), create an Organizational Unit (OU) called “_EMPLOYEES” and another one called "_ADMINS":
+  After DC-01 restarts, log back into it to complete these steps. Click on tools in the top right. In Active Directory Users and Computers (ADUC), create an Organizational Unit (OU) called “_EMPLOYEES” and another one called "_ADMINS":
 </p>
 <p>
-  <img src="https://i.imgur.com/cYmv0r7.png" height="75%" width="100%" alt="organizational unit"/>
+  <img src="https://i.postimg.cc/BbQNQgNq/Add-New-Organizational-Unit.png" height="75%" width="100%" alt="organizational unit"/>
   <img src="https://i.imgur.com/v02CBPI.png" height="75%" width="100%" alt="organizational unit"/>
 </p>
 <p>
-  Create a new employee named “Jane Doe” with the username of “jane_admin”:
+  Create a new employee named “John Smith” with the username of “john_smith”. Take note of the password:
 </p>
 <p>
-  <img src="https://i.imgur.com/h546E6L.png" height="75%" width="100%" alt="admin creation"/>
+  <img src="https://i.postimg.cc/t4kPtMQy/Create-New-User.png" height="75%" width="100%" alt="admin creation"/>
 </p>
 <p>
-  Add jane_admin to the “Domain Admins” Security Group:
+  Add john_smith to the “Domain Admins” Security Group. Right click their name and select properties then follow path in the image below:
 </p>
 <p>
-  <img src="https://i.imgur.com/mnLwTgq.png" height="75%" width="100%" alt="security group"/>
+  <img src="https://i.postimg.cc/pdQSZxVr/Add-User-To-Group.png" height="75%" width="100%" alt="security group"/>
 </p>
 <p>  
-  Log out/close the Remote Desktop connection to DC-1 and log back in as “myadproject.com\jane_admin”. Use jane_admin as your admin account from now on:
+  Log out/close the Remote Desktop connection to DC-01 and log back in as “john_smith@mydomain.com”. Use john_smith as your admin account from now on NOTE: The picture says john_admin because that's the user logon name I gave him, but john_smith works too:
 </p>
 <p>
-  <img src="https://i.imgur.com/xWZ4Kol.png" height="75%" width="100%" alt="admin login"/>
+  <img src="https://i.postimg.cc/cJT83s50/Login-As-New-Created-User.png" height="75%" width="100%" alt="admin login"/>
 </p>
 <br />
 <br />
-<h3 align="center">Join Client-1 to your domain (myadproject.com)</h3>
+<h3 align="center">Join Client-1 to your domain (mydomain.com)</h3>
 <br />
 <p>
   From the Azure Portal, set Client-1’s DNS settings to the DC’s Private IP address:
