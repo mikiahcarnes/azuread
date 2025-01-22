@@ -125,35 +125,32 @@ This tutorial outlines the implementation of on-premises Active Directory within
   <img src="https://i.postimg.cc/t4kPtMQy/Create-New-User.png" height="75%" width="100%" alt="admin creation"/>
 </p>
 <p>
-  Add john_smith to the “Domain Admins” Security Group. Right click their name and select properties then follow path in the image below:
+  Add john_smith to the “Domain Admins” Security Group. Right-click their name and select properties, then follow the path in the image below:
 </p>
 <p>
   <img src="https://i.postimg.cc/pdQSZxVr/Add-User-To-Group.png" height="75%" width="100%" alt="security group"/>
 </p>
 <p>  
-  Log out/close the Remote Desktop connection to DC-01 and log back in as “john_smith@mydomain.com”. Use john_smith as your admin account from now on NOTE: The picture says john_admin because that's the user logon name I gave him, but john_smith works too:
+  Log out/close the Remote Desktop connection to DC-01 and log back in as “john_smith@mydomain.com.” Use john_smith as your admin account from now on. NOTE: The picture says john_admin because that's the user logon name I gave him, but john_smith works too:
 </p>
 <p>
-  <img src="https://i.postimg.cc/cJT83s50/Login-As-New-Created-User.png" height="75%" width="100%" alt="admin login"/>
+  <img src="https://i.postimg.cc/Xqtw4fvv/Log-In-As-New-User.png" height="75%" width="100%" alt="admin login"/>
 </p>
 <br />
 <br />
 <h3 align="center">Join Client-1 to your domain (mydomain.com)</h3>
 <br />
 <p>
-  From the Azure Portal, set Client-1’s DNS settings to the DC’s Private IP address:
+  From the Azure Portal, set Client-1’s DNS settings to the DC’s Private IP address. The path to DNS settings is up top in the picture. Save it and then reset Client-1 in the Azure Portal:
 </p>
 <p>
-  <img src="https://i.imgur.com/1KRsjI6.png" height="75%" width="100%" alt="client dns settings"/>
+  <img src="https://i.postimg.cc/25X3rZj9/DNSSetup-On-Client-1.png" height="75%" width="100%" alt="client dns settings"/>
 </p>
 <p>
-  From the Azure Portal, restart Client-1.
+  Login to Client-1 (Remote Desktop) as the original local admin you made when you first created the VM and join it to the domain (the computer will restart):
 </p>
 <p>
-  Login to Client-1 (Remote Desktop) as the original local admin (labuser) and join it to the domain (computer will restart):
-</p>
-<p>
-  <img src="https://i.imgur.com/50wszcP.png" height="75%" width="100%" alt="domain joining"/>
+  <img src="https://i.postimg.cc/XqFvKNSV/Client-1-To-Domain.png" height="75%" width="100%" alt="domain joining"/>
 </p>
 <p>
   Login to the Domain Controller (Remote Desktop) and verify Client-1 shows up in Active Directory Users and Computers (ADUC) inside the “Computers” container on the root of the domain.
@@ -162,14 +159,14 @@ This tutorial outlines the implementation of on-premises Active Directory within
   Create a new OU named “_CLIENTS” and drag Client-1 into there:
 </p>
 <p>
-  <img src="https://i.imgur.com/vB1n9m0.png" height="75%" width="100%" alt="active directory client verification"/>
+  <img src="https://i.postimg.cc/vmnMNYHk/New-OUand-Client-1-Added.png" height="75%" width="100%" alt="active directory client verification"/>
 </p>
 <br />
 <br />
 <h3 align="center">Setup Remote Desktop for non-administrative users on Client-1</h3>
 <br />
 <p>
-  Log into Client-1 as mydomain.com\jane_admin and open system properties.
+  Log into Client-1 as jonh_smith@mydomain.com and open system properties.
 </p>
 <p>
   Click “Remote Desktop”.
@@ -181,49 +178,39 @@ This tutorial outlines the implementation of on-premises Active Directory within
   You can now log into Client-1 as a normal, non-administrative user now.
 </p>
 <p>
-  Normally you’d want to do this with Group Policy that allows you to change MANY systems at once (maybe a future lab):
+  Normally, you’d want to do this with a Group Policy that allows you to change MANY systems at once (maybe a future lab):
 </p>
 <p>
-  <img src="https://i.imgur.com/8BfpT3s.png" height="75%" width="100%" alt="remote desktop setup"/>
+  <img src="https://i.postimg.cc/dtytkjGG/Set-Up-Remote-Desktop-Userson-Client-1.png" height="75%" width="100%" alt="remote desktop setup"/>
 </p>
 <br />
 <br />
 <h3 align="center">Create a bunch of additional users and attempt to log into client-1 with one of the users</h3>
 <br />
 <p>
-  Login to DC-1 as jane_admin
+  Login to DC-1 as john_smith
 </p>
 <p>
   Open PowerShell_ise as an administrator.
 </p> 
 <p>  
-  Create a new File and paste the contents of this script (https://github.com/Xinloiazn/configure-ad/blob/main/adscript.ps1) into it:
+  Create a new File and paste the contents of this script (https://github.com/Xinloiazn/configure-ad/blob/main/adscript.ps1) into it. I recommend changing the $NUMBER_OF_ACCOUNTS_TO_CREATE variable to something like 50 or 100; 1000 takes too long to create. After you do that, click the run button circled in the picture below and observe the users being created:
 </p>
 <p>
-  <img src="https://i.imgur.com/0i8uApf.png" height="75%" width="100%" alt="create users script"/>
+  <img src="https://i.postimg.cc/TYPGn8B8/Script-To-Add-Users.png" height="75%" width="100%" alt="create users script"/>
 </p>
 <p>
-  Run the script and observe the accounts being created:
+  When finished, open ADUC observe the accounts in the appropriate OU, and attempt to log into Client-1 with one of the accounts; the password is Password1 unless you change it in the script you ran:
 </p>
 <p>
-  <img src="https://i.imgur.com/6QOGzs6.png" height="75%" width="100%" alt="observe create users script"/>
-</p>
-<p>
-  When finished, open ADUC and observe the accounts in the appropriate OU and attempt to log into Client-1 with one of the accounts (take note of the password in the script):
-</p>
-<p>
-  <img src="https://i.imgur.com/ZZCfiCp.png" height="75%" width="100%" alt="employee user accounts"/>
-  <img src="https://i.imgur.com/7gBpNzN.png" height="75%" width="100%" alt="employee user selection"/>
-  <img src="https://i.imgur.com/cqsddjn.png" height="75%" width="100%" alt="employee user login"/>
+  <img src="https://i.postimg.cc/tRx4YH0B/Generated-Users.png" height="75%" width="100%" alt="employee user accounts"/>
+  <img src="https://i.postimg.cc/QMYpmKqg/Login-As-New-Created-User.png" height="75%" width="100%" alt="employee user selection"/>
 </p>
 <br />
 <br />
 <p>
-  I hope this tutorial helped you learn a little bit about network security protocols and observe traffic between virtual machines. This can be easily done on a PC or a Mac. Mac would just have an extra step to download the Remote Desktop App.
+  That's it. Now that we're done DON'T FORGET TO CLEAN UP YOUR AZURE ENVIRONMENT so that you don't incur unnecessary charges.
 </p>
 <p>
-  Now that we're done, DON'T FORGET TO CLEAN UP YOUR AZURE ENVIRONMENT so that you don't incur unnecessary charges.
-</p>
-<p>
-  Close your Remote Desktop connection, delete the Resource Group(s) created at the beginning of this tutorial, and verify Resource Group deletion.
+  Close your Remote Desktop connection, stop the virtual machines, delete the Resource Group(s) created at the beginning of this tutorial, and verify the Resource Group deletion.
 </p>
