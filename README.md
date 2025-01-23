@@ -194,7 +194,7 @@ This tutorial outlines the implementation of on-premises Active Directory within
   Open PowerShell_ise as an administrator.
 </p> 
 <p>  
-  Create a new File and paste the contents of this script (https://github.com/Xinloiazn/configure-ad/blob/main/adscript.ps1) into it. I recommend changing the $NUMBER_OF_ACCOUNTS_TO_CREATE variable to something like 50 or 100; 1000 takes too long to create. After you do that, click the run button circled in the picture below and observe the users being created:
+  Create a new File and paste the contents of this script (https://github.com/mikiahcarnes/azuread/blob/main/adscript.ps1) into it. I recommend changing the $NUMBER_OF_ACCOUNTS_TO_CREATE variable to something like 50 or 100; 1000 takes too long to create. After you do that, click the run button circled in the picture below and observe the users being created:
 </p>
 <p>
   <img src="https://i.postimg.cc/TYPGn8B8/Script-To-Add-Users.png" height="75%" width="100%" alt="create users script"/>
